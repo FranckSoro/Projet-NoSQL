@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    <title> Liste </title>
+{% endblock %}
+
+{% block content %}
+    <h1>Liste des Ouvrages</h1>
+    <a href="{% url 'gestion:creer_ouvrage' %}">Ajouter un nouvel ouvrage</a>
+    <table border="1">
+        <tr>
+            <th>Titre</th>
+            <th>Date de publication</th>
+            <th>Auteur</th>
+            <th>Catégorie</th>
+            <th>Actions</th>
+        </tr>
+        {% for ouvrage in ouvrages %}
+        <tr>
+            <td>{{ ouvrage.titre }}</td>
+            <td>{{ ouvrage.date_publication }}</td>
+            <td>{{ ouvrage.auteur.prenom }} {{ ouvrage.auteur.nom }}</td>
+            <td>{{ ouvrage.categorie.nom }}</td>
+            <td>
+                <a href="{% url 'gestion:modifier_ouvrage' ouvrage.pk %}">Modifier</a> |
+                <a href="{% url 'gestion:supprimer_ouvrage' ouvrage.pk %}">Supprimer</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    <title> Modifier </title>
+{% endblock %}
+
+{% block content %}
+    <h1>Modifier Ouvrage</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Enregistrer les modifications</button>
+    </form>
+    <a href="{% url 'gestion:liste_ouvrages' %}">Retour à la liste des ouvrages</a>
+{% endblock %}

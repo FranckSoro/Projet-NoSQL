@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    <title> Surpprimer </title>
+{% endblock %}
+
+{% block content %}
+    <h1>Supprimer Ouvrage</h1>
+    <p>Êtes-vous sûr de vouloir supprimer l'ouvrage "{{ ouvrage.titre }}" ?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Oui, supprimer</button>
+    </form>
+    <a href="{% url 'gestion:liste_ouvrages' %}">Non, revenir à la liste</a>
+{% endblock %}
